@@ -15,20 +15,27 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Instructions enrolment plugin.
+ * autoenrol enrolment plugin.
  *
- * @package    enrol_instructions
- * @copyright  2020 Ben Ramcharan (Rammas) {@link https://github.com/rammadogs/Moodle-Enrol-Instructions}
+ * This plugin automatically enrols a user onto a course the first time they try to access it.
+ *
+ * @package    enrol_autoenrol
+ * @copyright  2013 Mark Ward & Matthew Cannings - based on code by Martin Dougiamas, Petr Skoda, Eugene Venter and others
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-if ($ADMIN->fulltree) {
+$capabilities = array(
 
-    $settings->add(new admin_setting_heading('enrol_instructions_settings_header', '', get_string('pluginname', 'enrol_instructions')));
+    'enrol/instructions:config'      => array(
+        'captype'      => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes'   => array(
+            'manager'        => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+        )
+    )
 
-    $settings->add(new admin_setting_confightmleditor('enrol_instructions/header', get_string('settings_label_header', 'enrol_instructions'), get_string('settings_desc_header', 'enrol_instructions'), ""));
+);
 
-    $settings->add(new admin_setting_confightmleditor('enrol_instructions/footer', get_string('settings_label_footer', 'enrol_instructions'), get_string('settings_desc_footer', 'enrol_instructions'), ""));
-}

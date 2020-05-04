@@ -24,4 +24,21 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once("$CFG->libdir/formslib.php");
+require_once($CFG->dirroot .'/course/externallib.php');
+
+use core_course_external;
+
+function getMergeFieldsForCourse($courseid) {
+	global $DB;
+
+	$course = $DB->get_record('course', array('id' => $courseid));
+	
+	return $course;
+}
+
+function performMerge($text, $fields) {
+	foreach($fields as $field => $value) {
+		$text = str_replace('{{' . $field . '}}', $value, $text);
+	}
+	return $text;
+}

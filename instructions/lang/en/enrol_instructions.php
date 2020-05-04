@@ -21,3 +21,19 @@
  * @copyright  2020 Ben Ramcharan (Rammas) {@link https://github.com/rammadogs/Moodle-Enrol-Instructions}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+//plugin name and description
+$string['pluginname'] = 'Enrolment instructions';
+$string['pluginname_desc'] = 'This simple plugin does not enrol any users in the course. Its sole purpose in existing in a course is to customise the "Enrolment Options" page and provide instructions on that page for the user to enrol in the course.';
+
+//permission descriptions
+$string['instructions:config'] = "Configure Enrollment Instructions instances.";
+
+//config form field labels
+$string['label_message_to_user'] = "Message";
+
+//blanket settings form field labels
+$string['settings_label_header'] = "Header";
+$string['settings_desc_header'] = "A header to be shown above the message for every instance of the Enrollment Instructions plugin on the site.";
+$string['settings_label_footer'] = "Footer";
+$string['settings_desc_footer'] = "A footer to be shown below the message for every instance of the Enrollment Instructions plugin on the site.";
